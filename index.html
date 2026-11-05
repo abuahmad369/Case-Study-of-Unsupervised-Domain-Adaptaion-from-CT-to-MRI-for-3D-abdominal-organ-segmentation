@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CT to MRI without MRI labels · Results</title>
+<meta name="description" content="An nnU-Net trained only on CT, with GIN augmentation, segments 13 abdominal organs on MRI: 0.776 Dice against 0.268 without it.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2314181f'/%3E%3Cellipse cx='16' cy='16' rx='10' ry='8' fill='none' stroke='%23e8b25a' stroke-width='2.4'/%3E%3Cpath d='M11 16c2-3 8-3 10 0' fill='none' stroke='%239fb4cf' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="app.css">
+<style>
+/* The demo's status line is short; this page's date needs the room on phones. */
+@media (max-width: 640px) { .topbar .status { display: none; } }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><ellipse cx="16" cy="16" rx="11" ry="8.5"/><path d="M10.5 16.5c2.4-3.4 8.6-3.4 11 0"/></svg>
+    <div class="brand-text">
+      <span class="brand-title">CT to MRI without MRI labels</span>
+      <span class="brand-sub">CSE498R research project · Abu Ahmad</span>
+    </div>
+  </div>
+  <nav class="tabs" aria-label="Project pages">
+    <a href="#" aria-selected="true">Results</a>
+    <a id="link-overview" href="#">Overview</a>
+    <a id="link-method" href="#">Method</a>
+  </nav>
+  <div class="status ok">
+    <span class="dot"></span><span class="status-text">Final evaluation, 13 October 2026</span>
+  </div>
+</header>
+
+<main>
+<section class="view" id="view-result">
+  <div class="page">
+    <header class="page-head">
+      <h1>A CT model that reads MRI almost as well as an MRI model</h1>
+      <p class="lede">An nnU-Net trained only on CT, with random intensity
+      augmentation (GIN), segments 13 abdominal organs on MRI it has never
+      seen. Every number below comes from the project's final evaluation.</p>
+    </header>
+
+    <div class="result-grid">
+      <figure class="panel fig" id="fig-models">
+        <figcaption>
+          <span class="fig-title">Dice on MRI, every model of the project</span>
+          <div class="seg" role="radiogroup" aria-label="Test set" id="set-switch">
+            <button role="radio" aria-checked="true" data-set="amos">AMOS · 60 scans</button>
+            <button role="radio" aria-checked="false" data-set="ext">TotalSegmentator · 100 scans</button>
+          </div>
+        </figcaption>
+        <div class="chart" id="chart-models" aria-label="Dice of every model"></div>
+        <p class="fig-note" id="note-models"></p>
+      </figure>
+
+      <aside class="panel tests" aria-labelledby="tests-title">
+        <h2 id="tests-title">Tests fixed before training</h2>
+        <p class="muted small" id="tests-sub"></p>
+        <table class="tbl tests-tbl" id="tests-table"></table>
+        <div class="verdict" id="verdict"></div>
+      </aside>
+    </div>
+
+    <figure class="panel fig wide">
+      <figcaption>
+        <span class="fig-title">Each organ, plain against GIN</span>
+        <span class="legend-inline"><i class="sw plain"></i>Plain nnU-Net <i class="sw gin"></i>GIN nnU-Net</span>
+      </figcaption>
+      <div class="organ-pair">
+        <div><h3 class="chart-h">AMOS, 60 test MRI</h3><div class="chart" id="chart-organs-amos"></div></div>
+        <div><h3 class="chart-h">TotalSegmentator MRI, 100 scans</h3><div class="chart" id="chart-organs-ext"></div></div>
+      </div>
+    </figure>
+
+    <footer class="sources">
+      <span>The source code and trained models are private while a paper on this
+      work is in preparation. Live inference and the evidence checks run in a
+      local demo app. Copyright 2026 Abu Ahmad.</span>
+    </footer>
+  </div>
+</section>
+</main>
+
+<script type="module" src="results.js"></script>
+</body>
+</html>
