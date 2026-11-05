@@ -4,6 +4,8 @@
 
 Abu Ahmad · CSE498R research project, North South University · Supervisor: Dr. Mohammad Monir Uddin · 2026
 
+**[Open the interactive results page](https://abuahmad369.github.io/Case-Study-of-Unsupervised-Domain-Adaptaion-from-CT-to-MRI-for-3D-abdominal-organ-segmentation/)**
+
 Hospitals have far more labelled CT scans than labelled MRI. This project asks
 whether a 3D segmentation model trained only on labelled CT can find 13
 abdominal organs on MRI. A standard nnU-Net trained on CT scores 0.17 Dice on
@@ -21,6 +23,7 @@ dataset, at a cost of only 0.006 Dice on CT.
 
 | | |
 |---|---|
+| [Interactive results](https://abuahmad369.github.io/Case-Study-of-Unsupervised-Domain-Adaptaion-from-CT-to-MRI-for-3D-abdominal-organ-segmentation/) | every model on both MRI sets, the tests fixed before training, every organ |
 | [Method](docs/METHOD.md) | data preparation, the three methods, training, evaluation rules, engineering |
 | [Results](docs/RESULTS.md) | every model and run, results per organ, all figures |
 
